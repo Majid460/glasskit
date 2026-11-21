@@ -1,0 +1,18 @@
+*.iml
+.gradle/
+build/
+local.properties
+.idea/
+!.idea/codeStyles/
+.DS_Store
+captures/
+.externalNativeBuild/
+.cxx/
+*.xcuserstate
+xcuserdata/
+sample/iosApp/**/DerivedData/
+Pods/
+
+# stray archives
+*.tar.gz
+.kotlin/

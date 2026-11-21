@@ -1,0 +1,8 @@
+// Set TEAM_ID (your Apple Developer Team ID) only if you run on a real device. Simulator works without it.
+TEAM_ID=
+
+PRODUCT_NAME=GlassKitSample
+PRODUCT_BUNDLE_IDENTIFIER=io.github.majid460.glasskit.sample$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0

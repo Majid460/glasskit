@@ -3,7 +3,7 @@
 ## Goals
 1. One source of truth for navigation state, in Kotlin.
 2. Use the *system* bar so iOS 26 draws Liquid Glass itself (no imitation shader).
-3. Zero Swift code for library users.
+3. No SwiftUI shell and no Swift code to write beyond the standard iOS launcher (`iosApp`).
 
 ## Public API (explicit API mode)
 - `GlassTab`: immutable tab description (id, title, SF Symbol, fallback vector).

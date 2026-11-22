@@ -5,7 +5,7 @@
 <img src="docs/images/logo.png" alt="GlassKit logo" width="140"/>
 
 <a href="https://github.com/Majid460/glasskit">
-  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=26&duration=3200&pause=900&color=5CE1FF&center=true&vCenter=true&width=820&lines=Native+iOS+26+Liquid+Glass+tab+bar;For+Compose+Multiplatform;One+back+stack.+Zero+Swift.;Navigation+3+managed+for+you" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=26&duration=3200&pause=900&color=5CE1FF&center=true&vCenter=true&width=820&lines=Native+iOS+26+Liquid+Glass+tab+bar;For+Compose+Multiplatform;One+back+stack.+No+SwiftUI+shell.;Navigation+3+managed+for+you" alt="Typing SVG" />
 </a>
 
 <img src="docs/images/banner.svg" alt="GlassKit banner" width="100%"/>
@@ -39,16 +39,16 @@ Compose Multiplatform draws its own UI, so it cannot render the system Liquid Gl
 1. **Imitate the bar in Compose.** It looks close but is not the real glass, and does not follow iOS updates.
 2. **Wrap the app in a SwiftUI `TabView`.** You get the real bar, but now tab selection and back stacks live in Swift while screens live in Kotlin, and you have to keep both sides in sync.
 
-GlassKit takes a third route: it embeds the real `UITabBar` inside Compose and draws it **on top of your content**, so the glass samples whatever scrolls beneath it. Selection and back stacks stay in a single Kotlin object, so there is no Swift shell and no state to synchronise.
+GlassKit takes a third route: it embeds the real `UITabBar` inside Compose and draws it **on top of your content**, so the glass samples whatever scrolls beneath it. Selection and back stacks stay in a single Kotlin object, so there is no SwiftUI shell and no state to synchronise. (A plain Compose Multiplatform app already has a small Swift launcher, `iosApp`, that just hosts your Compose view controller. GlassKit adds no Swift on top of it.)
 
-| | Typical CMP app | GlassKit |
+| | SwiftUI-shell approach (JetBrains guide) | GlassKit |
 |---|---|---|
-| iOS tab bar | Compose-drawn imitation | Native `UITabBar`, drawn over your content |
-| Navigation state | Split between Swift and Kotlin | One Kotlin owner (`GlassNavigator`) |
+| iOS tab bar | Native `TabView`, owned by Swift | Native `UITabBar`, drawn over your content |
+| Navigation state | Mirrored between Swift and Kotlin | One Kotlin owner (`GlassNavigator`) |
 | Back stack per tab | Hand-rolled | Built in, survives config changes |
 | Side drawer | Hand-rolled | Optional slot, gestures only on root screens |
 | Navigation 3 | Wire it yourself | `useNavigation3 = true` |
-| Swift code required | Often | None |
+| Swift you write for the bar | A SwiftUI `TabView` / `NavigationStack` shell | None. Only the standard iOS launcher (`iosApp`) that every CMP app already has |
 
 <img src="docs/images/divider.svg" width="100%"/>
 
@@ -233,7 +233,7 @@ These are the author's **rough estimates** of what it takes to build the same pi
 | Modal drawer that hides the bar and limits gestures to root screens | 0.5 day | one parameter |
 | **Total** | **about 3 to 6 working days** | **roughly an hour to adopt** |
 
-It also removes ongoing cost: no Swift shell to maintain, and no two-sided navigation state to keep consistent.
+It also removes ongoing cost: no SwiftUI shell to maintain, and no two-sided navigation state to keep consistent.
 
 <img src="docs/images/divider.svg" width="100%"/>
 
